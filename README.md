@@ -18,20 +18,20 @@ po/squid-2537263375-koisq   1/1       Running   0          57s
 ```
 In order to run the glidein pods a proxy must be stored as a Secret - this will be used for authenticating with the glideinWMS HTCondor pool. In addition 3 ConfigMaps are required for storing the glidein arguments as well as the site-local-config.xml and storage.xml files.
 ```
-kubectl create secret generic proxy --from-file=proxy
-kubectl create configmap glideinargs --from-file=glideinargs
-kubectl create configmap site-local-config.xml --from-file=site-local-config.xml
-kubectl create configmap storage.xml --from-file=storage.xml
+$ kubectl create secret generic proxy --from-file=proxy
+$ kubectl create configmap glideinargs --from-file=glideinargs
+$ kubectl create configmap site-local-config.xml --from-file=site-local-config.xml
+$ kubectl create configmap storage.xml --from-file=storage.xml
 ```
 The file site-local-config.xml is made available inside the glidein container in /etc/cms/JobConfig and storage.xml is made available  in /etc/cms/PhEDEx (alternatively these files could be obtained from CVMFS, but for testing providing the files directly is simpler).
 
 Now create the glidein deployment:
 ```
-kubectl create -f glideins.yaml
+$ kubectl create -f glideins.yaml
 ```
 We use a horizontal pod autoscaler to scale the number of glidein pods depending on how much work there is:
 ```
-kubectl autoscale deployment glideins --min=1 --max=400 --cpu-percent=60
+$ kubectl autoscale deployment glideins --min=1 --max=400 --cpu-percent=60
 ```
 Here the maximum number of pods should be adjusted as appropriate. You should now see:
 ```
