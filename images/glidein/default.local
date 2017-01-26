@@ -1,0 +1,5 @@
+CVMFS_REPOSITORIES=grid.cern.ch,cms.cern.ch
+CVMFS_HTTP_PROXY="http://squid:3128"
+CVMFS_CACHE_BASE=/pool/cache/cvmfs2/
+CVMFS_MEMCACHE_SIZE=64
+CVMFS_QUOTA_LIMIT=60000
