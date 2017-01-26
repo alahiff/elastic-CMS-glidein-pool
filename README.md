@@ -22,10 +22,9 @@ kubectl create -f glideins.yaml
 ```
 We use a horizontal pod autoscaler to scale the number of glidein pods depending on how much work there is:
 ```
-kubectl autoscale deployment glideins --min=1 --max=400
+kubectl autoscale deployment glideins --min=1 --max=400 --cpu-percent=60
 ```
-(adjust the maximum number of pods as appropriate).
-
+Here the maximum number of pods should be adjusted as appropriate. You should now see:
 ```
 $ kubectl get deployments,pods
 NAME             DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
