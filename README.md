@@ -23,7 +23,7 @@ $ kubectl create configmap glideinargs --from-file=glideinargs
 $ kubectl create configmap site-local-config.xml --from-file=site-local-config.xml
 $ kubectl create configmap storage.xml --from-file=storage.xml
 ```
-The file site-local-config.xml is made available inside the glidein container in /etc/cms/JobConfig and storage.xml is made available  in /etc/cms/PhEDEx (alternatively these files could be obtained from CVMFS, but for testing providing the files directly is simpler).
+The file site-local-config.xml is made available inside the glidein container in /etc/cms/JobConfig and storage.xml is made available  in /etc/cms/PhEDEx (alternatively these files could be obtained from CVMFS, but for testing providing the files directly is simpler). glideinargs should be a text file containing the arguments for glidein_startup.sh in a single line.
 
 Now create the glidein deployment:
 ```
