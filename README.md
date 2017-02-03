@@ -50,3 +50,4 @@ We use a horizontal pod autoscaler to scale the number of glidein pods depending
 ```
 $ kubectl autoscale deployment glideins --min=1 --max=400 --cpu-percent=60
 ```
+Here the min and max numbers of pods should be adjusted as appropriate.
