@@ -1,6 +1,8 @@
 # Elastic CMS glidein pool
 Here we create CVMFS/Frontier squids as well as a pool of CMS glideins which scales elastically. It has been tested on local clusters (installed using kubeadm), Google Container Engine and Azure Container Service with CRAB3 jobs.
 
+Note that currently we need to use privileged containers in order for CVMFS to work. This should be resolved once https://github.com/kubernetes/kubernetes/pull/31504 is sorted out, i.e. CVMFS could be separated out and run in different containers to the jobs.
+
 Firstly deploy the squids:
 ```
 $ kubectl create -f squids.yaml
