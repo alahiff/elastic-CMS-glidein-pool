@@ -5,7 +5,7 @@ Here we create CVMFS/Frontier squids as well as a pool of CMS glideins which sca
 * Azure Container Service 
 * Amazon AWS (Kubernetes deployed using https://stackpoint.io/)
 
-Note that currently we need to use privileged containers in order for CVMFS to work. This should be resolved once https://github.com/kubernetes/kubernetes/pull/31504 is sorted out, i.e. CVMFS could be separated out and run in different containers to the jobs.
+Note that currently we need to use privileged containers in order for CVMFS to work. This should be resolved once https://github.com/kubernetes/kubernetes/pull/31504 is sorted out, i.e. CVMFS could be separated out and run in different containers to the jobs. Installing CVMFS on hosts using other means is not an option as this would break portability between different platforms.
 
 Firstly deploy the squids:
 ```
