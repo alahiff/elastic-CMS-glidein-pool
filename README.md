@@ -35,11 +35,7 @@ Now create the glidein deployment:
 ```
 $ kubectl create -f glideins.yaml
 ```
-We use a horizontal pod autoscaler to scale the number of glidein pods depending on how much work there is:
-```
-$ kubectl autoscale deployment glideins --min=1 --max=400 --cpu-percent=60
-```
-Here the maximum number of pods should be adjusted as appropriate. You should now see:
+and you should now see:
 ```
 $ kubectl get deployments,pods
 NAME             DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
@@ -49,4 +45,8 @@ NAME                          READY     STATUS    RESTARTS   AGE
 po/glidein-1922292197-981ut   1/1       Running   0          1m
 po/squid-2537263375-4hnz8     1/1       Running   0          28m
 po/squid-2537263375-koisq     1/1       Running   0          28m
+```
+We use a horizontal pod autoscaler to scale the number of glidein pods depending on how much work there is:
+```
+$ kubectl autoscale deployment glideins --min=1 --max=400 --cpu-percent=60
 ```
