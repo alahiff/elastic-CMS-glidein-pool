@@ -22,14 +22,14 @@ NAME                        READY     STATUS    RESTARTS   AGE
 po/squid-2537263375-4hnz8   1/1       Running   0          57s
 po/squid-2537263375-koisq   1/1       Running   0          57s
 ```
-In order to run the glidein pods a proxy must be stored as a Secret - this will be used for authenticating with the glideinWMS HTCondor pool. In addition 3 ConfigMaps are required for storing the glidein arguments as well as the site-local-config.xml and storage.xml files.
+In order to run the glidein pods a proxy must be stored as a Secret - this will be used for authenticating with the glideinWMS HTCondor pool. In addition 3 ConfigMaps are required for storing the glidein arguments as well as the the files `site-local-config.xml` and `storage.xml`.
 ```
 $ kubectl create secret generic proxy --from-file=proxy
 $ kubectl create configmap glideinargs --from-file=glideinargs
 $ kubectl create configmap site-local-config.xml --from-file=site-local-config.xml
 $ kubectl create configmap storage.xml --from-file=storage.xml
 ```
-The file site-local-config.xml is made available inside the glidein container in /etc/cms/JobConfig and storage.xml is made available  in /etc/cms/PhEDEx (alternatively these files could be obtained from CVMFS, but for testing providing the files directly is simpler). glideinargs should be a text file containing the arguments for glidein_startup.sh in a single line.
+The file `site-local-config.xml` is made available inside the glidein container in `/etc/cms/JobConfig` and `storage.xml` is made available in `/etc/cms/PhEDEx` (alternatively these files could be obtained from CVMFS, but for testing providing the files directly is simpler). glideinargs should be a text file containing the arguments for `glidein_startup.sh` in a single line.
 
 Now create the glidein deployment:
 ```
